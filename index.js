@@ -2,7 +2,7 @@ var CountStream = require('./countstream');
 var countStream = new CountStream('book');
 var http = require('http');
 
-http.get('http://www.manning.com', function(res) {
+http.get('http://it-ebooks.info/', function(res) {
 	res.pipe(countStream);
 });
 
