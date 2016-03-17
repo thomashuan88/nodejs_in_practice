@@ -9,9 +9,12 @@ console.log('__filename:', __filename);
 
 console.log(path.join(__dirname,'views','view.html'));
 
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
+var name = 'alex';
+var user = { name: 'alex' };
 
-process.stdin.on('data', function(text) {
-	process.stdout.write(text.toUpperCase());
-})
+console.log('Hello');
+console.log('hello %s', name);
+console.log('Hello:', name);
+console.log('Hello:', user);
+
+console.error('Error, bad user: ', user);
