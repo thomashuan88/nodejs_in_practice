@@ -1,0 +1,19 @@
+{
+  "name": "countstream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomashuan88/nodejs_in_practice.git"
+  },
+  "author": "thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomashuan88/nodejs_in_practice/issues"
+  },
+  "homepage": "https://github.com/thomashuan88/nodejs_in_practice#readme"
+}
