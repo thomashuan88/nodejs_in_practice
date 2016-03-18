@@ -30,13 +30,65 @@ var timeoutId = setTimeout(bomb.explode.bind(bomb), 1000);*/
 
 // -----------------------------------------------------------------
 
-function monitor() {
-	console.log(process.memoryUsage());
+// function monitor() {
+// 	console.log(process.memoryUsage());
+// }
+
+// var id = setInterval(monitor, 1000);
+// id.unref();
+
+// setTimeout(function() {
+// 	console.log('Done!');
+// }, 5000);
+
+// -----------------------------------------------------------------
+
+// var EventEmitter = require('events').EventEmitter;
+
+// function complexOperations() {
+// 	var events = new EventEmitter();
+
+// 	// events.emit('success'); 1((callout-globals-nexttick-1));
+// 	process.nextTick(function(){
+// 		events.emit('success');
+// 	});
+
+// 	return events;
+// }
+
+// complexOperations().on('success', function() {
+// 	console.log('success!');
+// });
+
+// -----------------------------------------------------------------
+
+var EventEmitter = require('events').EventEmitter;
+var fs = require('fs');
+var content;
+
+function readFileIfRequired(cb) {
+	if (!content) {
+		fs.readFile(__filename, 'utf8', function(err, data) {
+			content = data;
+			console.log('readFileIfRequired: readFile');
+			cb(err, content);
+		});
+	} else {
+		process.nextTick(function() {
+			console.log('readFileIfRequired: cached');
+			cb(null, content);
+		});
+	}
 }
 
-var id = setInterval(monitor, 1000);
-id.unref();
+readFileIfRequired(function(err, data) {
+	console.log('1. Length:', data.length);
 
-setTimeout(function() {
-	console.log('Done!');
-}, 5000);
+	readFileIfRequired(function(err, data2) {
+		console.log('2. Length:', data2.length);
+	});
+
+	console.log('Reading file again...');
+});
+
+console.log('Reading file...');
