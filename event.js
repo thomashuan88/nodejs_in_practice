@@ -4,9 +4,10 @@ var events = require('events');
 var AudioDevice = {
 	play: function(track) {
 		// stub: trigger playback through itunes, mpg123, etc.
+		console.log('Track now playing:', track);
 	},
 	stop: function() {
-
+		console.log('stop playing')
 	}
 }
 
