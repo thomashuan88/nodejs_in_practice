@@ -20,10 +20,16 @@ util.inherits(MusicPlayer, events.EventEmitter);
 
 var musicPlayer = new MusicPlayer();
 
-musicPlayer.on('play', function(track) {
+
+function play(track) {
 	this.playing = true;
 	AudioDevice.play(track);
-});
+}
+musicPlayer.on('play', play);
+
+musicPlayer.once('play', function () {
+	this.audioFirstStarted = new Date();
+})
 
 musicPlayer.on('stop', function() {
 	this.playing = false;
@@ -32,6 +38,9 @@ musicPlayer.on('stop', function() {
 
 musicPlayer.emit('play', 'The Roots - The Fire');
 
+
 setTimeout(function() {
 	musicPlayer.emit('stop');
 }, 1000);
+
+console.log(musicPlayer.audioFirstStarted);
