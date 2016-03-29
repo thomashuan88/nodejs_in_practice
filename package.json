@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thomashuan88/nodejs_in_practice#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "redis": "^2.6.0-0"
   }
 }
