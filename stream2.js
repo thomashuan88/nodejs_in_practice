@@ -11,10 +11,11 @@ function StatStream(limit) {
 }
 
 StatStream.prototype._read = function(size) {
-    console.log(this);
+    // console.log(this);
     if (this.limit == 0) {
         // done
-        this.push();
+        // this.push();
+        return;
     } else {
         this.push(util.inspect(process.memoryUsage()));
         this.push('n');
