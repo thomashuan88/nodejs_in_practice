@@ -9,8 +9,10 @@ function JSONLineReader(source) {
     this._buffer = '';
 
     source.on('readable', function() {
+        console.log('before');
         this.read();
-    }.bind(this))
+        console.log('after');
+    }.bind(this));
 }
 
 util.inherits(JSONLineReader, stream.Readable);
@@ -25,7 +27,7 @@ JSONLineReader.prototype._read = function(size) {
         chunk = this._source.read();
         this._buffer += chunk;
     }
-
+    console.log('in read');
     lineIndex = this._buffer.indexOf('\n');
 
     if (lineIndex !== -1) {
